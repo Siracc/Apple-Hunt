@@ -6,9 +6,7 @@ public class MoveController : IMove
 {
 
     public float VerticalAxis => Input.GetAxis("Vertical") * Time.deltaTime;
-
     
-
 
     public void Vertical(Transform _transform, float _climbSpeed, bool _isVerticalActive)
     {
@@ -22,6 +20,4 @@ public class MoveController : IMove
                 break;
         }
     }
-   
-
 }

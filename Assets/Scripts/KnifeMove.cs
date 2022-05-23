@@ -5,7 +5,10 @@ using UnityEngine;
 public class KnifeMove : MonoBehaviour
 {
     Rigidbody2D _rgdb2D;
+   
+
     [SerializeField] float _speed;
+
     private void Awake()
     {
         _rgdb2D = GetComponent<Rigidbody2D>();
@@ -20,5 +23,4 @@ public class KnifeMove : MonoBehaviour
     {
         _rgdb2D.AddForce(Vector2.right * _speed * Time.deltaTime);
     }
-
 }

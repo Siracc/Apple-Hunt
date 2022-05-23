@@ -8,6 +8,9 @@ TagManager:
   - RedApple
   - GreenApple
   - Text
+  - OzelGuc
+  - BlackApple
+  - GameOver
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public class FruitSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] _apples;
     [SerializeField] Transform _appleTransform;
+    
 
 
     [Range(1, 5)] [SerializeField] float _minSpawnTime;
@@ -17,25 +18,28 @@ public class FruitSpawner : MonoBehaviour
     {
         _currentTimeApple += Time.deltaTime;
 
-        if (_currentTimeApple > _randomSpawnTimeApple)
+        if (_currentTimeApple > _randomSpawnTimeApple && _currentTimeApple != 0)
         {
-            TreeSpawnStart();
+            AppleSpawnStart();
         }
     }
 
     
 
-    void TreeSpawnStart()
+    void AppleSpawnStart()
     {
         int _randomIndex = Random.Range(0, _apples.Length);
 
         Instantiate(_apples[_randomIndex], _appleTransform.position, _appleTransform.rotation);
-        ResetTimeTree();
+        ResetTimeApple();
     }
 
-    void ResetTimeTree()
+    void ResetTimeApple()
     {
         _currentTimeApple = 0;
         _randomSpawnTimeApple = Random.Range(_minSpawnTime, _maxSpawnTime);
     }   
+
+
+    
 }

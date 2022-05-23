@@ -8,14 +8,15 @@ public class KnifeOnGround : MonoBehaviour
     Text _puanText;
     int _puan;
 
+
     private void Awake()
     {
         _puanText = GameObject.FindGameObjectWithTag("Text").GetComponent<Text>();
+
     }
 
     private void Start()
     {
-        _puanText.text = PlayerPrefs.GetString("Puans");
         _puan = int.Parse(_puanText.text);
     }
 
@@ -24,8 +25,7 @@ public class KnifeOnGround : MonoBehaviour
         if (collision.gameObject.CompareTag("RedApple"))
         {
             _puan += 5;
-            _puanText.text = _puan.ToString();
-            PlayerPrefs.SetString("Puans", _puanText.text);
+            _puanText.text = _puan.ToString();           
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
@@ -34,12 +34,17 @@ public class KnifeOnGround : MonoBehaviour
         {
             _puan += 10;
             _puanText.text = _puan.ToString();
-            PlayerPrefs.SetString("Puans", _puanText.text);
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("BlackApple"))
+        {
+            PlayerPrefs.SetInt("GameOver", 1);
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+ 
+
+        }
     }
-
-
-
 }
